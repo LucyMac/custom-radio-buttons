@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Radio buttons</title>
+    </head>
+    <body>
+        <ul class="radio-buttons-list">
+            <li>
+                <input type="radio" name="demo"/>
+                <label for="alright">Alright</label>
+                <div class="check"></div>
+            </li>
+            <li>
+                <input type="radio" name="gender"/>
+                <label for="noway">No way</label>
+                <div class="check"></div>
+            </li>
+        </ul>
+    </body>
+
+    <style>
+    ul {
+        position: relative;
+        padding-left: 0;
+    }
+
+    li {
+        float: left; 
+        position: relative;
+        margin-right: 42px;
+        height: 30px;
+    }
+
+    label {
+        padding-left: 22px;
+        height: 30px;
+    }
+
+    input[type="radio"] {
+        position: absolute;
+        margin-top: 5px;
+        margin-left: 2px;
+        /*hide actual radio button but */
+        /*keep it on top of your custom button (div.check) with a hig z-index */
+        /*so that the original button is what you click on when selecting an answer*/
+        /*this will trigger the :checked style defined below*/
+        opacity: 0;
+        z-index: 40;
+        top: 0px;
+    }
+
+/*Define style for your custom radio button*/
+
+    /*div.check is the circle*/
+    div.check {
+        position: relative;
+        border: 2px solid #D0D0D0;
+        border-radius: 100%;
+        height: 16px;
+        width: 16px;
+        bottom: 32px;
+    }
+
+    /* div.check::before is the dot inside the circle, which is not visible until as answer has been :checked*/
+    /*so don't give it a colour yet!*/
+    div.check::before {
+        display: block;
+        position: absolute;
+        content: '';
+        border-radius: 100%;
+        height: 8px;
+        width: 8px;
+        top: 2px;
+        left: 2px;
+        margin: auto;
+        transition: background 0.25s linear;
+        -webkit-transition: background 0.25s linear;
+    }
+
+    /*now give the dot a colour for when the button is :checked */
+    input[type=radio]:checked ~ .check::before{
+        background-color: #D0D0D0;
+    }
+
+    </style>
+</html>
